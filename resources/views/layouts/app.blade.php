@@ -33,6 +33,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
    @stack('style')
     
 </head>
@@ -281,7 +282,7 @@
       </a>
 
       <div class="logo">
-        <a href="{{ route('home.index')}}">
+        <a href="{{ route('home.index')}}" wire:navigate>
           <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
         </a>
       </div>
@@ -320,13 +321,13 @@
         <div class="overflow-hidden">
           <ul class="navigation__list list-unstyled position-relative">
             <li class="navigation__item">
-              <a href="{{ route('home.index')}}" class="navigation__link">Home</a>
+              <a href="{{ route('home.index')}}" wire:navigate class="navigation__link">Home</a>
             </li>
             <li class="navigation__item">
-              <a href="{{route('shop.index')}}" class="navigation__link">Shop</a>
+              <a href="{{route('shop.index')}}" wire:navigate class="navigation__link">Shop</a>
             </li>
             <li class="navigation__item">
-              <a href="{{ route('cart.index')}}" class="navigation__link">Cart</a>
+              <a href="{{ route('cart.index')}}"  class="navigation__link">Cart</a>
             </li>
             <li class="navigation__item">
               <a href="about.html" class="navigation__link">About</a>
@@ -492,9 +493,12 @@
             </a>
           </div>
            @endguest
-          <a href="wishlist.html" class="header-tools__item">
+          <a href="{{route('wishlist.index')}}" class="header-tools__item header-tools__cart">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <use href="#icon_heart" />
+               @if(Cart::instance('wishlist')->content()->count() > 0)
+                  <span class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('wishlist')->content()->count() }}</span>
+               @endif
             </svg>
           </a>
 
@@ -670,6 +674,7 @@
       </div>
     </div>
   </footer>
+  
 
   <div id="scrollTop" class="visually-hidden end-0"></div>
   <div class="page-overlay"></div>
@@ -681,6 +686,8 @@
   <script src="{{ asset('assets/js/plugins/countdown.js') }}"></script>
   <script src="{{ asset('assets/js/theme.js') }}"></script>
   @stack('scripts')
+  
+  @livewireScripts
 </body>
 
 </html>
