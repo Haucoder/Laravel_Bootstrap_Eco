@@ -19,14 +19,8 @@
 * **Backend:** PHP 8.2+ (Laravel 10)
 * **Frontend:** Bootstrap 5, Blade Templates
 * **Database:** MySQL
-* **Gói (Package) chính:** `surfsidemedia/shoppingcart`
+
 
 ## ⚙️ Hướng dẫn Cài đặt và Chạy dự án
 
-Vui lòng làm theo các bước sau để chạy dự án trên máy của bạn.
-
-### 1. Clone Repository
-Lấy code từ GitHub về máy:
-```bash
-git clone [https://github.com/Haucoder/Laravel_Bootstrap_Eco.git](https://github.com/Haucoder/Laravel_Bootstrap_Eco.git)
-cd Laravel_Bootstrap_Eco
+ tải về bằng link đê -.-
