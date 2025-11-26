@@ -17,6 +17,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/shop/{product_slug}',[ShopController::class,'product_details'])->name('shop.details');
 
+Route::post('/cart/apply-coupon',[CartController::class,'apply_coupon_code'])->name('cart.apply_coupon');
+Route::delete('/cart/remove-coupon',[CartController::class,'remove_coupon_code'])->name('cart.remove_coupon');
+
 Route::post('/wishlist/add',[WishlistCotroller::class,'add_to_wishlist'])->name('wishlist.add');
 Route::get('/wishlist',[WishlistCotroller::class,'index'])->name('wishlist.index');
 Route::delete('/wishlist/remove-item/{rowId}',[WishlistCotroller::class,'remove_item'])->name('wishlist.remove_item');
