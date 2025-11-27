@@ -34,6 +34,10 @@ Route::put('/cart/decrease-quantity/{rowId}',[CartController::class,'decrease_qu
 Route::delete('/cart/remove-item/{rowId}',[CartController::class,'remove_item'])->name('cart.remove_item');
 Route::delete('/cart/clear',[CartController::class,'clear_cart'])->name('cart.clear');
 
+Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+Route::post('/checkout/place-order',[CartController::class,'plance_an_order'])->name('cart.place_order');
+Route::get('/order/confirmation',[CartController::class,'order_confirmation'])->name('cart.order_confirmation');
+
 Route::middleware(['auth'],AuthAdmin::class)->group(function(){
     //brands + admin
     Route::get('/admin',[AdminControlller::class, 'index'] )->name('admin.index');
