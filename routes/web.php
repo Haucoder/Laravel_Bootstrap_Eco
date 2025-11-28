@@ -69,11 +69,15 @@ Route::middleware(['auth'],AuthAdmin::class)->group(function(){
     Route::get('/admin/coupons/{id}/edit',[AdminControlller::class,'coupon_edit'])->name('admin.coupon.edit');
     Route::put('/admin/coupons/update',[AdminControlller::class,'coupon_update'])->name('admin.coupon.update');
     Route::delete('/admin/coupons/{id}/delete',[AdminControlller::class,'coupon_delete'])->name('admin.coupon.delete');
+    //orders
+    Route::get('/admin/orders',[AdminControlller::class,'Order'])->name('admin.orders');
+    Route::get('/admin/order/{order_id}/details',[AdminControlller::class,'order_details'])->name('admin.order.details');
 
 });
 
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/account-dashboard',[UserController::class, 'index'] )->name('user.index');
-    
+    Route::get('/account-orders',[UserController::class, 'orders'] )->name('user.orders');
+    Route::get('/account-order/{order_id}/details',[UserController::class, 'order_details'] )->name('user.order.details');
 });
