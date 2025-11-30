@@ -106,7 +106,7 @@ class CartController extends Controller
         $address=Address::where('user_id',Auth::user()->id)->where('isdefault',1)->first();
         return view('checkout', compact('address'));
     }
-    public function plance_an_order(Request $request){
+    public function place_an_order(Request $request){
         $user=Auth::user();
         $address=Address::where('user_id',$user->id)->where('isdefault',true)->first();
         //place order logic here
@@ -167,7 +167,10 @@ class CartController extends Controller
         } else if($request->mode=='paypal'){
             //paypal logic
            
-        } else if($request->mode=='cod'){
+        }else if ($request->mode == 'vnpay') {
+        //// Gọi hàm xử lý riêng cho gọn
+    }
+         else if($request->mode=='cod'){
             //cod logic
           $transaction= new Transaction();
           $transaction->user_id=$user->id;
@@ -175,7 +178,7 @@ class CartController extends Controller
           $transaction->mode=$request->mode;
           $transaction->status='pending';
           $transaction->save();
-        }
+        } 
 
         Cart::instance('cart')->destroy();
         Session::forget('checkout');
@@ -184,6 +187,8 @@ class CartController extends Controller
         Session::put('order_id',$order->id);
         return redirect()->route('cart.order_confirmation',compact('order'))->with('Success','Your order has been placed successfully.');
     }
+
+
     public function setAmountforCheckout(){
         if(!Cart::instance('cart')->content()->count() >0){
             Session::forget('checkout');

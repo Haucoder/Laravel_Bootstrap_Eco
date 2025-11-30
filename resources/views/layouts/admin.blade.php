@@ -37,7 +37,7 @@
 
                 <div class="section-menu-left">
                     <div class="box-logo">
-                        <a href="index.html" id="site-logo-inner">
+                        <a href="{{route('home.index')}}" id="site-logo-inner">
                             <img class="" id="logo_header_1" alt="" src="{{asset('upload/logo/logo.png')}}"
                                 data-light="{{asset('upload/logo/logo.png')}}" data-dark="{{asset('upload/logo/logo.png')}}">
                         </a>
@@ -133,9 +133,9 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="slider.html" class="">
+                                    <a href="{{route('admin.slides')}}" class="">
                                         <div class="icon"><i class="icon-image"></i></div>
-                                        <div class="text">Slider</div>
+                                        <div class="text">Slides</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
@@ -456,8 +456,8 @@
                        
 
 
-                        <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 SurfsideMedia</div>
+                        <div class="bottom-page flex items-center justify-center">
+                            <span class="body-text">  2025 HAUDEV</span>
                         </div>
                     </div>
 

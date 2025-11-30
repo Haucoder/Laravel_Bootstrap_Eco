@@ -214,7 +214,12 @@
                     @endif
                 </div>
                 <div class="checkout__payment-methods">
-                   
+                        <div class="form-check">
+                            <input class="form-check-input form-check-input_fill" type="radio" name="mode" id="mode4" value="vnpay">
+                            <label class="form-check-label" for="mode4">
+                                VNPay (ATM/QR)
+                            </label>
+                        </div>
                     <div class="form-check">
                     <input class="form-check-input form-check-input_fill" type="radio" name="mode" id="mode1" value="card">
                     <label class="form-check-label" for="mode1">

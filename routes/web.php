@@ -35,8 +35,11 @@ Route::delete('/cart/remove-item/{rowId}',[CartController::class,'remove_item'])
 Route::delete('/cart/clear',[CartController::class,'clear_cart'])->name('cart.clear');
 
 Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
-Route::post('/checkout/place-order',[CartController::class,'plance_an_order'])->name('cart.place_order');
+Route::post('/checkout/place-order',[CartController::class,'place_an_order'])->name('cart.place_order');
 Route::get('/order/confirmation',[CartController::class,'order_confirmation'])->name('cart.order_confirmation');
+
+
+
 
 Route::middleware(['auth'],AuthAdmin::class)->group(function(){
     //brands + admin
@@ -74,6 +77,13 @@ Route::middleware(['auth'],AuthAdmin::class)->group(function(){
     Route::get('/admin/order/{order_id}/details',[AdminControlller::class,'order_details'])->name('admin.order.details');
     Route::put('/admin/order/update-status',[AdminControlller::class,'update_order_status'])->name('admin.order.update_status');
 
+    //slides
+    Route::get('/admin/slides',[AdminControlller::class,'Slide'])->name('admin.slides');
+    Route::get('/admin/slide/add',[AdminControlller::class,'slide_add'])->name('admin.slide.add');
+    Route::post('/admin/slide/store',[AdminControlller::class,'slide_store'])->name('admin.slide.store');
+    Route::get('/admin/slide/{id}/edit',[AdminControlller::class,'slide_edit'])->name('admin.slide.edit');
+    Route::put('/admin/slide/update',[AdminControlller::class,'slide_update'])->name('admin.slide.update');
+    Route::delete('/admin/slide/{id}/delete',[AdminControlller::class,'silde_delete'])->name('admin.slide.delete');
 });
 
 Route::middleware(['auth'])->group(function(){
