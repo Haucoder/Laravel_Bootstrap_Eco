@@ -106,7 +106,7 @@
                  @include('user.account-nav')
             </div>
             <div class="col-lg-10">
-                <div class="wg-box">
+<div class="wg-box mt-5">
             <div class="flex items-center justify-between gap10 flex-wrap">
                 
                 <div class="row">
@@ -116,7 +116,7 @@
                 
             </div>
             <div class="table-responsive">
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered table-transaction">
                     <thead>
                         <tr>
                             <th>Order No</th>
@@ -160,8 +160,8 @@
             </div>
 
     </div>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+    <div class="table-responsive"> 
+        <table class="table  table-bordered table-striped table-transaction">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -272,6 +272,18 @@
                 </tbody>
             </table>
         </div>
+          @if ($order->status=='ordered')
+            
+          
+          <div class="wg-box mt-5 text-right">
+            <form action="{{route('user.order.cancel')}}" method="post">
+              @csrf
+              @method('PUT')
+              <input type="hidden" name="order_id" value="{{ $order->id }}">
+              <button type="button" class="btn btn-primary cancel-order">  Cancel Order</button>
+            </form>
+          </div>
+          @endif
             </div>
         
             
@@ -280,3 +292,28 @@
 </main>
     
 @endsection
+@push('scripts')
+<script>
+$(function(){
+    $('.cancel-order').on("click", function(e){
+        e.preventDefault();
+        var form = $(this).closest('form');
+        swal({
+            title:"Are you sure?",
+            text:"once cancelled,you will not be able to recover this data",
+            type:'warning',
+            buttons:['No','Yes'],
+            confirmButtonColor:'#3085d6',
+            cancelButtonColor:'#d33',
+        }).then(function(isConfirm){
+            if(isConfirm)
+             form.submit();
+            
+        });
+                
+        
+
+    });
+});
+</script>
+@endpush
